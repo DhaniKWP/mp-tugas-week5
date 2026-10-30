@@ -6,6 +6,13 @@ class ProfilePage extends StatelessWidget {
   final String userName = "Dhani Kusuma Wardana Putra";
   final String role = "Mahasiswa Software Engineering";
 
+  final List<String> experiences = const [
+    'Quality Control - PT. Takagi Sari Multi',
+    'Streamer - Tiktok',
+    'Lead Developer - Aplikasi Shopee',
+    'Backend Engineer - Nvidia',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,6 +51,36 @@ class ProfilePage extends StatelessWidget {
               ),
               const SizedBox(height: 24),
               const ProfileStats(),
+              const SizedBox(height: 24),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Pengalaman Kerja',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const Divider(),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: experiences.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      elevation: 2,
+                      margin: const EdgeInsets.symmetric(vertical: 6),
+                      child: ListTile(
+                        leading: const Icon(
+                          Icons.work,
+                          color: Colors.blueAccent,
+                        ),
+                        title: Text(experiences[index]),
+                      ),
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),
